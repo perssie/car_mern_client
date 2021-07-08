@@ -16,7 +16,6 @@ const Car = ({ car, setCurrentId }) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const history = useHistory();
     const openCar = (e) => {
-      // dispatch(getCar(car._id, history));
       history.push(`/cars/${car._id}`);
     };
 
@@ -49,7 +48,7 @@ const Car = ({ car, setCurrentId }) => {
           </ButtonBase>
           <CardActions className={classes.cardActions}>
             <Button size="small" color="primary" onClick={() => dispatch(likeCar(car._id))}><ThumbUpAltIcon fontSize="small" /> {car.likes} </Button>
-            <Button size="small" color="primary" > Comments {car.comments.length} </Button>
+            <Button size="small" color="primary" onClick={openCar}> Comments {car.comments.length} </Button>
             <Button size="small" color="primary" onClick={() => dispatch(deleteCar(car._id))}><DeleteIcon fontSize="small" /> </Button>
           </CardActions>
         </Card>
