@@ -22,6 +22,7 @@ export const getCar = (id) => async (dispatch) => {
     const { data } = await api.fetchCar(id);
 
     dispatch({ type: FETCH_CAR, payload: { car: data } });
+    dispatch({ type: LOADED });
   } catch (error) {
     console.log(error);
   }
@@ -42,6 +43,7 @@ export const updateCar = ( id, car ) => async (dispatch) => {
         const { data } = await api.updateCar(id, car);
 
         dispatch({ type: UPDATE, payload: data});
+        dispatch({ type: LOADED });
     } catch (error) {
         console.error(error.message);
     }
