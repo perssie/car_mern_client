@@ -50,16 +50,8 @@ const Car = () => {
     dispatch(getCar(id));
   }
 
-  if (isLoading) {
-    return (
-      <Paper elevation={6} className={classes.loadingPaper}>
-        <CircularProgress size="7em" />
-      </Paper>
-    );
-  }
-
   return (
-
+    isLoading ? <CircularProgress></CircularProgress> : (
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item sm={12} md={8} >
@@ -72,8 +64,7 @@ const Car = () => {
 
               <div  className={classes.section}>
                 <Typography variant="h3" component="h2">{car.name}</Typography>
-                <Typography gutterBottom variant="h6" color="textSecondary" component="h2">By {car.createBy}</Typography>
-                <Typography gutterBottom variant="body1" component="p">{car.type}</Typography>
+                <Typography gutterBottom variant="h6" color="textSecondary" component="h2"> {car.type}</Typography>
                 <Typography gutterBottom variant="body1" component="p">{car.description}</Typography>
               </div>
             </div>
@@ -122,7 +113,7 @@ const Car = () => {
     </div>
 
 
-  );
+  ));
 };
 
 export default Car;

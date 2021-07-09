@@ -5,10 +5,7 @@ export const getCars = () => async (dispatch) => {
     try {
       dispatch({ type: LOADING });
       const { data } = await api.fetchCars();
-      console.log('get all cars ....', data);
       dispatch({ type: FETCH_ALL, payload: { data }});
-
-      console.log('get all cars ....', data);
 
       dispatch({ type: LOADED });
     } catch (error) {
@@ -18,7 +15,7 @@ export const getCars = () => async (dispatch) => {
 
 export const getCar = (id) => async (dispatch) => {
   try {
-
+    dispatch({ type: LOADING });
     const { data } = await api.fetchCar(id);
 
     dispatch({ type: FETCH_CAR, payload: { car: data } });
@@ -30,6 +27,7 @@ export const getCar = (id) => async (dispatch) => {
 
 export const createCar = ( car ) => async (dispatch) => {
     try {
+        dispatch({ type: LOADING });
         const { data } = await api.createCar(car);
 
         dispatch({ type: CREATE, payload: data});
@@ -40,6 +38,7 @@ export const createCar = ( car ) => async (dispatch) => {
 
 export const updateCar = ( id, car ) => async (dispatch) => {
     try {
+        dispatch({ type: LOADING });
         const { data } = await api.updateCar(id, car);
 
         dispatch({ type: UPDATE, payload: data});
